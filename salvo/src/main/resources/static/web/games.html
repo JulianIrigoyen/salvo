@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SSB Salvo Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/main-style.css">
+</head>
+
+<body>
+
+    <div id="app" class="container-fluid">
+        
+        <div class="title row mx-0">
+            <h1>Super Smash Bros: SALVO!</h1>
+        </div>
+        <div class=" player-tables row mx-0">
+            <div class='col-6'>
+                <button  id="create-btn"  type="button" class="ml-5 btn btn-info btn-lg">New Game</button>
+                <ul> 
+                    <li v-for="game in games">
+                        Game Number {{game.id}} - Started on {{game.creationDate}}
+                        <ul>
+                            <li v-for="gamePlayer in game.gamePlayers">
+                              {{gamePlayer.player.userName}}
+                                <template v-if="gamePlayer.player.userName === player.userName">
+                                    <a class="game-link" :href="'game.html?gp='+gamePlayer.id">
+                                    : continue.</a>
+                                  </template>
+
+                                  <template v-if= "player != 'guest' && (game.gamePlayers.length == 1 && gamePlayer.player.userName !== player.userName)"  >
+                                  <a  type="button" class="join-btn ml-1 btn btn-info btn-sm" v-bind:data-game="game.id"
+                                   onclick="joinGame(this)"> 
+                                  Join game</a>
+                                  </template> 
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+            </div>
+            <div class='leaderboard table-responsive col-6'>
+                <h1 class="leaderboard-title"> Top Smashers</h1>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Total Score</th>
+                            <th>Won</th>
+                            <th>Tied</th>
+                            <th>Lost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr v-for="player in stats">
+                              <td>{{player.email}}</td>
+                              <td>{{player.score}}</td>
+                              <td>{{player.won}}</td>
+                              <td>{{player.tied}}</td>
+                              <td>{{player.lost}}</td>
+
+                            </tr>
+                          </tbody>
+                        </table>
+
+            </div>
+
+        </div>
+
+        <div class="player-form">
+                
+                <!-- The button that triggers the Modal -->
+                <button  id="login-btn"  type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Log In</button>
+                <button  id="logout-btn"  type="button" class="btn btn-info btn-lg">Log Out</button>
+                <!-- Bootstrap Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Welcome</h4>
+                      </div>
+                      <div class="modal-body">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <input type="text" id="userNameTextBox" placeholder="Username" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span id="userNamSpan"></span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <input type="password" id="passwordTextBox" placeholder="Password" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span id="passwordSpan"></span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <input type="button" id="submitLoginButton" value="Login" />
+                              </td>
+                              <td>
+                                    <input type="button" id="submitSignupButton" value="Sign Up" />
+                                  </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span id="messageSpan"></span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                <!-- END Modal content-->
+                </div>
+                </div>
+                <!-- END Bootstrap Modal -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/games.js"></script>
+</body>
+
+</html>

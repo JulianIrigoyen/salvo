@@ -1,0 +1,138 @@
+body {
+    background-image:url("assets/main-bg.png");
+    /* Background colors:
+    #FDFEFD white
+    #3F89EB light blue
+    #1E5DA5 dark light blue
+    #042553 dark blue
+    */
+    background-repeat: repeat;
+    background-size: 100%;
+    color: silver;
+}
+
+.main{
+    margin-left: 0 !important;
+
+}
+
+.grid-ships {
+    background-image: url("assets/gridBg.png");
+    background-size: contain;
+    height: 500px !important;
+    width: 500px  !important;
+    max-height: 500px;
+    max-width: 500px;
+    min-height: 490px;
+    min-width: 490px;
+    padding-left: 45px;
+    padding-top: 45px;
+}
+
+/* ----- SHIPS! -----*/
+.fiveHorizontal{
+    background-color: blue;
+    background-size: contain;
+}
+
+.fiveVertical{
+    background-color: blue;
+    background-size: 100% 100%;
+    width: 45px !important;
+}
+
+.fourHorizontal{
+    background-color: yellow;
+    background-size: contain;
+}
+
+.fourVertical{
+    background-color: yellow;
+    background-size: 100% 100%;
+    width: 45px !important;
+}
+
+.threeAHorizontal{
+    background-color: green;
+    background-size: contain;
+}
+
+.threeAVertical{
+    background-color: green;
+    background-size: 100% 100%;
+    width: 45px !important;
+}
+
+.tresHortizontal{
+    background-color: orange;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.tresVertical{
+    background-color: orange;
+    background-size: 100% 100%;
+    width: 45px !important;
+}
+
+.twoHorizontal{
+    background-image: url('assets/marlui.png');
+    background-size: 100% 100%;
+}
+
+.twoVertical{
+    background-image: url('assets/marLuiVert.png');
+    background-size: 100% 100%;
+    width: 45px !important;
+}
+
+
+/* ----------- SALVO GRID ----------- */
+table th, table td {
+      width: 45px !important;
+      height: 45px !important;
+      max-width: 45px !important;
+      max-height: 45px !important;
+      min-width: 45px !important;
+      min-height: 45px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      outline: 1px solid !important;
+      border-color: black !important;
+  }
+
+  #salvo-table tr th, #salvo-table tr td{
+    background-color: rgba(210,130,240, 0.3); 
+  }
+  #salvo-table tr td:hover {
+    background-color: #042553;
+    }
+
+.salvo-shot{
+    position: absolute;
+    height: 45px !important;
+    width: 45px !important;
+    z-index: 2;
+    content:url('assets/boom.gif');
+}
+.fire-here{
+    background-color: #042553 !important;
+    background-image: url('assets/fire-here.png');
+    background-size: 100% 100%;
+}
+
+
+.down{
+    background-image: url('assets/mario-no.png');
+    background-size: 100% 100%;
+}
+
+/* -- Override grid framework position commands
+----- so as to center content in grid cells */
+.grid-stack-item-content{
+    left: 0 !important;
+    right: 0 !important;
+}
+
+
+
